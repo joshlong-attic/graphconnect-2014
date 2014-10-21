@@ -3,18 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+
     <properties>
         <neo4j.version>3.1.2.RELEASE</neo4j.version>
     </properties>
-
     <parent>
-        <groupId>scaling-software</groupId>
-        <artifactId>z-axis</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.1.8.RELEASE</version>
     </parent>
+    <groupId>graphconnect</groupId>
+    <artifactId>spring-data-neo4j</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
     <packaging>jar</packaging>
-    <artifactId>neo4j</artifactId>
-    <name>scaling-software:z-axis:neo4j</name>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.data</groupId>
