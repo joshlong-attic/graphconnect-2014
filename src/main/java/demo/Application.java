@@ -97,9 +97,13 @@ public class Application extends Neo4jConfiguration {
 interface UserRepository extends GraphRepository<User> {
 
     @Query("MATCH (me:User {user:{name}})-[:POSTED]->" +
-            "(tweet)-[:MENTIONS]->(user)" +
-            " WHERE me <> user " +
-            " RETURN distinct user")
+            "(tweet)-[:TAGGED]->(tag:Tag),\n" +
+            "(tag)<-[:TAGGED]-()<-[:POSTED]-(users:User)\n" +
+            "WHERE me <> users\n" +
+            "WITH distinct users, count(tweet) as tweets\n" +
+            "RETURN users\n" +
+            "ORDER BY tweets DESC")
+
     Set<User> suggestFriends(@Param("name") String user);
 
     User findByUser(@Param("0") String user);

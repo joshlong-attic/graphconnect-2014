@@ -22,7 +22,7 @@ public class Tweet {
     User poster;
 
     @Fetch
-    @RelatedTo(type = "TAGGED")
+    @RelatedTo(type = "TAGGED", direction = Direction.OUTGOING)
     Collection<Tag> tags = new HashSet<Tag>();
 
     @Fetch
